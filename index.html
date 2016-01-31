@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>WebTextEditor</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script src="editor-process.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    $(function() {
+      changeColor(document.getElementById('file_edit_area'));
+      return $('#file_edit_area').on('keyup', function(e) {
+        var orgRange, selection;
+        selection = window.getSelection();
+        orgRange = selection.getRangeAt(0);
+        changeColor(this);
+        selection.removeAllRanges();
+        return selection.addRange(orgRange);
+      });
+    });
+  </script>
+
+</head>
+<body>
+  <div id="file_edit_area" contentEditable=true>
+    \documentclass<br>
+    \begin{document}<br>
+    \end{document}
+  </div>
+</body>
+</html>
